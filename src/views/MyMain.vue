@@ -4,17 +4,22 @@
       <my-aside></my-aside>
     </el-aside>
     <el-container>
-      <el-header>Header</el-header>
-      <el-main>Main</el-main>
+      <el-header>
+        <my-header></my-header>
+      </el-header>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
 import MyAside from '@/components/MyAside'
+import MyHeader from '@/components/MyHeader'
 export default {
   name: 'MyHome',
-  components: { MyAside },
+  components: { MyAside, MyHeader },
   data() {
     return {}
   }

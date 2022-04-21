@@ -14,6 +14,7 @@
       v-for="(item, index) in noChildren"
       :key="index"
       :index="item.path + ''"
+      @click="gotoPageMenu(item)"
     >
       <i :class="'el-icon-' + item.icon"></i>
       <span>{{ item.label }}</span>
@@ -94,7 +95,13 @@ export default {
   },
   methods: {
     handleOpen() {},
-    handleClose() {}
+    handleClose() {},
+    // 点击导航栏跳转到对应的路由页面
+    gotoPageMenu(item) {
+      this.$router.push({
+        name: item.name
+      })
+    }
   },
   // 对列表进行过滤
   computed: {
@@ -118,6 +125,5 @@ export default {
   line-height: 60px;
   font-size: 15px;
   color: white;
-  border-bottom: 0.3px solid #efefef;
 }
 </style>
