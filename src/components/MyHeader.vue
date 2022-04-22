@@ -1,7 +1,12 @@
 <template>
   <header>
     <div class="l-center">
-      <el-button plain icon="el-icon-menu" size="mini"></el-button>
+      <el-button
+        @click="callCollapse()"
+        plain
+        icon="el-icon-menu"
+        size="mini"
+      ></el-button>
       <span class="bread-title">首页</span>
     </div>
     <div class="r-center">
@@ -19,12 +24,16 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'MyHeader',
   data() {
     return {
       userImg: require('../assets/images/user.png')
     }
+  },
+  methods: {
+    ...mapMutations(['callCollapse'])
   }
 }
 </script>

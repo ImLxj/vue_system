@@ -9,10 +9,10 @@
     style="height: 100%"
     :collapse-transition="false"
   >
-    <div class="aside-title">后台管理系统</div>
+    <h2 class="aside-title">{{ isCollapse ? '后台' : '后台管理系统' }}</h2>
     <el-menu-item
-      v-for="(item, index) in noChildren"
-      :key="index"
+      v-for="item in noChildren"
+      :key="item.name"
       :index="item.path + ''"
       @click="gotoPageMenu(item)"
     >
@@ -30,8 +30,8 @@
       </template>
       <el-menu-item-group>
         <el-menu-item
-          v-for="(subItem, subIndex) in item.children"
-          :key="subIndex"
+          v-for="subItem in item.children"
+          :key="subItem.path"
           :index="subItem.path + ''"
           >{{ subItem.label }}</el-menu-item
         >
@@ -45,8 +45,6 @@ export default {
   name: 'MyAside',
   data() {
     return {
-      // 控制侧边栏是否展开
-      isCollapse: false,
       // 导航栏列表
       menuList: [
         {
@@ -111,19 +109,13 @@ export default {
     },
     hasChildren() {
       return this.menuList.filter((item) => item.children)
+    },
+    // 控制侧边栏的展开合并
+    isCollapse() {
+      return this.$store.state.tab.isCollapse
     }
   }
 }
 </script>
 
-<style lang="less" scoped>
-.aside-title {
-  width: 100%;
-  height: 60px;
-  background-color: #545c64;
-  text-align: center;
-  line-height: 60px;
-  font-size: 15px;
-  color: white;
-}
-</style>
+<style lang="less" scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="200px">
+    <el-aside>
       <my-aside></my-aside>
     </el-aside>
     <el-container>
@@ -36,6 +36,7 @@ export default {
 .el-aside {
   overflow: hidden !important;
   height: 100%;
+  width: auto !important;
 }
 .el-container {
   height: 100%;
